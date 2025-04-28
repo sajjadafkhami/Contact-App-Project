@@ -1,12 +1,11 @@
-# React + Vite
+# Contact App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a contact management application built with React. The app allows users to add, edit, search, and delete contact information. It also supports bulk deletion and confirmation dialogs for sensitive operations.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Add, edit, and delete contacts
+- Search contacts by first name, last name, email, phone, or job
+- Select and delete multiple contacts at once
+- Confirmation modal for sensitive operations (e.g., delete)
+- Modern styling using CSS and animations
