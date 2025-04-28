@@ -4,7 +4,8 @@ import { ContactContext } from "../context/ContactContext";
 const initialForm = { firstName: "", lastName: "", email: "", phone: "", job: "" };
 
 const ContactForm = ({ editable, onClose }) => {
-  const { dispatch } = useContext(ContactContext);
+  const { dispatch} = useContext(ContactContext);
+
   const [formData, setFormData] = useState(initialForm);
   const [errors, setErrors] = useState({});
 
@@ -26,19 +27,34 @@ const ContactForm = ({ editable, onClose }) => {
     return Object.keys(errs).length === 0;
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!validate()) return;
+  
     const action = editable ? "UPDATE_CONTACT" : "ADD_CONTACT";
-    dispatch({ 
-      type: action,
-      payload: { 
-        ...formData,
-        id: editable?.id || Date.now()
-      }
+    const message = editable
+      ? `آیا از ویرایش ${formData.firstName} ${formData.lastName} مطمئن هستید؟`
+      : `آیا از افزودن ${formData.firstName} ${formData.lastName} مطمئن هستید؟`;
+  
+    dispatch({
+      type: "SET_MODAL",
+      payload: {
+        message,
+        onConfirm: () => {
+          dispatch({
+            type: action,
+            payload: {
+              ...formData,
+              id: editable?.id || Date.now(),
+            },
+          });
+          dispatch({ type: "CLEAR_MODAL" }); // برای اطمینان از بسته شدن مدال
+          onClose();
+        },
+      },
     });
-    onClose();
   };
+  
 
   return (
     <form onSubmit={handleSubmit}>
