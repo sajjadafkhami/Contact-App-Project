@@ -99,7 +99,7 @@ const ContactForm = ({ editable, onClose }) => {
 
       <div className="contact-form">
         <button type="button" onClick={onClose}>لغو</button>
-        <button type="submit" disabled={Object.keys(errors).length > 0}>
+        <button type="submit">
           {editable ? "ویرایش" : "افزودن"}
         </button>
       </div>
